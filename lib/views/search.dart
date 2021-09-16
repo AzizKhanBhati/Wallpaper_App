@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:onlinewallpaperapp/controller/controller.dart';
+import 'package:onlinewallpaperapp/views/parallaxView.dart';
 import 'package:onlinewallpaperapp/widgets/wallpaperGridView.dart';
 
 class Search extends StatelessWidget {
@@ -30,6 +31,14 @@ class Search extends StatelessWidget {
             return wallPaper(controller.searchedPhotos);
           },
         ),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          Get.to(() => ParallaxView(photos: controller.searchedPhotos));
+        },
+        label: Text("Parallax"),
+        icon: Icon(Icons.arrow_forward),
+        backgroundColor: Colors.black.withOpacity(.75),
       ),
     );
   }

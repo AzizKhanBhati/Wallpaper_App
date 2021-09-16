@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:onlinewallpaperapp/controller/controller.dart';
+import 'package:onlinewallpaperapp/views/parallaxFunctions.dart';
+import 'package:onlinewallpaperapp/views/parallaxView.dart';
 import 'package:onlinewallpaperapp/widgets/categoryListView.dart';
 import 'package:onlinewallpaperapp/widgets/searchbar.dart';
 import 'package:onlinewallpaperapp/widgets/wallpaperGridView.dart';
 
 class Home extends StatelessWidget {
   final controller = Get.put(Controller());
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -54,6 +57,14 @@ class Home extends StatelessWidget {
             ),
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          Get.to(() => ParallaxView(photos: controller.photos));
+        },
+        label: Text("Parallax"),
+        icon: Icon(Icons.arrow_forward),
+        backgroundColor: Colors.black.withOpacity(.75),
       ),
     );
   }
